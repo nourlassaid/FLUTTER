@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('About'),
-        backgroundColor: const Color.fromARGB(255, 128, 11, 11),
+        backgroundColor: Color.fromARGB(255, 226, 113, 7),
       ),
       body: ListView(
         children: [
@@ -17,7 +17,8 @@ class AboutPage extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/img/1.png', // Replace with your logo asset
-                  width: 200,
+                     fit: BoxFit.cover,
+                 
                   height: 200,
                 ),
                 SizedBox(height: 20),

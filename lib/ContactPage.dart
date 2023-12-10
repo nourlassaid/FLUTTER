@@ -7,7 +7,7 @@ class ContactPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Contactez-nous'),
         
-        backgroundColor: const Color.fromARGB(255, 128, 11, 11),
+        backgroundColor: Color.fromARGB(255, 226, 113, 7),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),

@@ -15,6 +15,8 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
     Center(child: Text('Bottom Tab 2')),
   ];
 
+  List<String> options = ['Option 1', 'Option 2', 'Option 3'];
+
   @override
   bool get wantKeepAlive => true;
 
@@ -44,18 +46,60 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
         ),
       );
     } else {
-      List<String> options = ['Option 1', 'Option 2', 'Option 3'];
       if (upperTabIdx == 0) {
-        return ListWheelScrollView(
-          itemExtent: 200,
-          children: List.generate(
-            5,
-            (index) => Card(
-              child: Image.network(
-                'https://example.com/image_$index.jpg',
-                fit: BoxFit.cover,
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 200, // Adjust the height as needed
+                child: Image.asset('assets/img/logo.png',
+              
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Le Crowdfunding, c’est quoi ?',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Le crowdfunding est un mécanisme qui a pour objectif de collecter les apports financiers d’un grand nombre de particuliers au moyen d’une plateforme Internet. L’objectif de cette collecte est, sur GlobeDreamers, le financement de projets sur des voyages engagés.',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      '« Longue est la route par le précepte, courte et facile par l’exemple. »\n\nSénèque',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Mais GlobeDreamers ce n’est pas qu’un simple outil de financement participatif, c’est aussi un outil de sponsoring, de parrainage médiatique et associatif. Et enfin, c’est l’écosystème le plus complet pour réunir tous les éléments et partenaires nécessaires pour créer, financer et raconter son voyage engagé.',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add logic for creating a project
+                      },
+                      child: Text('Créé ton projet !'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add logic for determining the cagnotte
+                      },
+                      child: Text('Détermine ta cagnotte !'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       } else if (upperTabIdx == 1) {
@@ -79,79 +123,7 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           SizedBox(height: 16),
-          Text(
-            'Bienvenue dans la section "Comment cela fonctionne" de notre application.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 16),
-          Text(
-            '1. Comment fonctionne le crowdfunding?',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          Text(
-            '   Le crowdfunding, ou financement participatif, est un moyen de collecter des fonds auprès d\'un grand nombre de personnes pour financer un projet.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 16),
-          Text(
-            '2. Qu\'est-ce que le financement participatif?',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          Text(
-            '   Le financement participatif est une méthode de collecte de fonds où un grand nombre de personnes contribuent financièrement à un projet ou à une cause.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 16),
-          Text(
-            '3. Comment fonctionne la collecte de fonds en équipe?',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          Text(
-            '   La collecte de fonds en équipe permet à un groupe de personnes de collaborer pour atteindre un objectif financier commun.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Add logic to start a new crowdfunding campaign
-                  print('Démarrer une cagnotte button clicked');
-                },
-                child: Text('Démarrer une cagnotte'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Add logic to handle the connect button
-                  print('Se connecter button clicked');
-                },
-                child: Text('Se connecter'),
-              ),
-            ],
-          ),
-          SizedBox(height: 16),
-          TextButton(
-            onPressed: () {
-              // Add logic to navigate to the "How Crowdfunding Works" page
-              print('How Crowdfunding Works link clicked');
-            },
-            child: Text('Comment fonctionne le crowdfunding?'),
-          ),
-          TextButton(
-            onPressed: () {
-              // Add logic to navigate to the "What is Crowdfunding?" page
-              print('What is Crowdfunding? link clicked');
-            },
-            child: Text('Qu\'est-ce que le financement participatif?'),
-          ),
-          TextButton(
-            onPressed: () {
-              // Add logic to navigate to the "Team Fundraising" page
-              print('Team Fundraising link clicked');
-            },
-            child: Text('Comment fonctionne la collecte de fonds en équipe?'),
-          ),
+          // Ajoutez ici le reste du contenu de votre onglet "Comment cela fonctionne"
         ],
       ),
     );
@@ -163,13 +135,13 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-       appBar: AppBar(
+        appBar: AppBar(
           title: Text(
             'Crowdfunding Cagnotte',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 128, 11, 11),
+          backgroundColor: Color.fromARGB(255, 226, 113, 7),
           bottom: TabBar(
             indicatorColor: Colors.white,
             tabs: [
@@ -194,13 +166,12 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
             ],
           ),
           actions: [
-              IconButton(
+            IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
                 _navigateToSearchPage(context);
               },
             ),
-            
             IconButton(
               icon: Icon(Icons.notifications),
               onPressed: () {
@@ -224,9 +195,10 @@ class _TestPageState extends State<TestPage> with AutomaticKeepAliveClientMixin 
   void _handleOptionsButton() {
     print('Options button clicked');
   }
-}
 
-void _navigateToSearchPage(BuildContext context) {
+  void _navigateToSearchPage(BuildContext context) {
+    // Ajoutez ici la logique de navigation vers la page de recherche
+  }
 }
 
 class CategoriesListView extends StatelessWidget {
@@ -238,55 +210,27 @@ class CategoriesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CategoryItem> categories = [
-      CategoryItem('Sante ', 'assets/img/sante.png'),
-      CategoryItem('Animaux', 'assets/img/animaux.png'),
-      CategoryItem('associations', 'assets/img/associations.png'),
-      CategoryItem('idee de projet', 'assets/img/idee.png'),
+      CategoryItem('Santé', 'assets/img/sante.png', 'Des frais médicaux ? Créez une cagnotte ! Lancez une cagnotte et réglez de suite vos dépenses de santé.'),
+      CategoryItem('Education', 'assets/img/education.png', 'Des études à financer ? Créez une cagnotte !Lancez une cagnotte pour régler rapidement des frais de scolarité.'),
+      CategoryItem('Associations', 'assets/img/associations.png', 'Changez les choses grâce à une collecte de fonds au profit dune association à but non lucratif.'),
+      CategoryItem('Idée de Projet', 'assets/img/idee.png', 'Description pour les idées de projet'),
+      CategoryItem('Animaux', 'assets/img/animaux.png', 'Découvrez les cagnottes dédiées aux animaux Faites un don ou lancez une cagnotte pour aider un proche.'),
     ];
 
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Welcome',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              PopupMenuButton<String>(
-                onSelected: (String value) {
-                  if (value == 'options') {
-                    onOptionsButtonPressed?.call();
-                  }
-                },
-                itemBuilder: (BuildContext context) {
-                  return options.map((String option) {
-                    return PopupMenuItem<String>(
-                      value: option,
-                      child: Text(option),
-                    );
-                  }).toList();
-                },
-              ),
-            ],
+    return ListView.builder(
+      itemCount: categories.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(categories[index].name),
+          subtitle: Text(categories[index].description),
+          leading: CircleAvatar(
+            backgroundImage: AssetImage(categories[index].imagePath),
           ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(categories[index].name),
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(categories[index].imagePath),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
+          onTap: () {
+            // Ajoutez ici la logique lorsque l'utilisateur clique sur une catégorie
+          },
+        );
+      },
     );
   }
 }
@@ -294,6 +238,7 @@ class CategoriesListView extends StatelessWidget {
 class CategoryItem {
   final String name;
   final String imagePath;
+  final String description;
 
-  CategoryItem(this.name, this.imagePath);
+  CategoryItem(this.name, this.imagePath, this.description);
 }

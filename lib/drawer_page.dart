@@ -15,7 +15,7 @@ class DrawerPage extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 128, 11, 11),
+            color: Color.fromARGB(255, 226, 113, 7),
             ),
             child: Text(
               'Démarrer une cagnotte',
